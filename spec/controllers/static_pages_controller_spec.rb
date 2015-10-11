@@ -36,5 +36,4 @@ RSpec.describe StaticPagesController, type: :controller do
       assert_select "title", "Contact"
     end
   end
-
 end
