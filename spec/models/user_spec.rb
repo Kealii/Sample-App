@@ -61,6 +61,13 @@ RSpec.describe User, type: :model do
     expect(@user).to be_invalid
   end
 
+  it 'should save email addresses as lower case' do
+    mixed_case_email = 'FOO@exaAMPLE.com'
+    @user.email = mixed_case_email
+    @user.save
+    expect(@user.reload.email).to eq(mixed_case_email.downcase)
+  end
+
   it 'should have a non-blank password' do
     @user.password = " " * 6
     expect(@user).to be_invalid
