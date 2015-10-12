@@ -56,6 +56,11 @@ RSpec.describe User, type: :model do
     expect(duplicate_user).to be_invalid
   end
 
+  it 'should reject emails with 2 periods' do
+    @user.email = 'a' * 6 + '@example..com'
+    expect(@user).to be_invalid
+  end
+
   it 'should have a non-blank password' do
     @user.password = " " * 6
     expect(@user).to be_invalid
